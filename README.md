@@ -1,3 +1,5 @@
+> This project is used to replace ART method wholy instead field by field refer to [Alibaba hotfix ebook](https://help.aliyun.com/document_detail/53240.html?spm=5176.doc53287.2.1.bMpfMo)
+
 # AndFix
 
 [![Download](https://api.bintray.com/packages/supern/maven/andfix/images/download.svg) ](https://bintray.com/supern/maven/andfix/_latestVersion)
