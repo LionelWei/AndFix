@@ -17,10 +17,14 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/jni/src )
-
-# Specifies a path to native header files.
-include_directories(src/main/jni/include/)
+             andfix.cpp
+             art_method_replace.cpp
+             art_method_replace_4_4.cpp
+             art_method_replace_5_0.cpp
+             art_method_replace_5_1.cpp
+             art_method_replace_6_0.cpp
+             art_method_replace_7_0.cpp
+             dalvik_method_replace.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

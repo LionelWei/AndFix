@@ -54,14 +54,14 @@ extern jboolean __attribute__ ((visibility ("hidden"))) dalvik_setup(
 		JNIEnv* env, int apilevel) {
 	void* dvm_hand = dlopen("libdvm.so", RTLD_NOW);
 	if (dvm_hand) {
-		dvmDecodeIndirectRef_fnPtr = dvm_dlsym(dvm_hand,
+		dvmDecodeIndirectRef_fnPtr = (dvmDecodeIndirectRef_func) dvm_dlsym(dvm_hand,
 				apilevel > 10 ?
 						"_Z20dvmDecodeIndirectRefP6ThreadP8_jobject" :
 						"dvmDecodeIndirectRef");
 		if (!dvmDecodeIndirectRef_fnPtr) {
 			return JNI_FALSE;
 		}
-		dvmThreadSelf_fnPtr = dvm_dlsym(dvm_hand,
+		dvmThreadSelf_fnPtr = (dvmThreadSelf_func) dvm_dlsym(dvm_hand,
 				apilevel > 10 ? "_Z13dvmThreadSelfv" : "dvmThreadSelf");
 		if (!dvmThreadSelf_fnPtr) {
 			return JNI_FALSE;

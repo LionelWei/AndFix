@@ -34,7 +34,7 @@ public class AndFix {
 
 	static {
 		try {
-			Runtime.getRuntime().loadLibrary("andfix");
+			Runtime.getRuntime().loadLibrary("andfix2");
 		} catch (Throwable e) {
 			Log.e(TAG, "loadLibrary", e);
 		}
