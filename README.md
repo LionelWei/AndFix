@@ -140,11 +140,11 @@ And it is necessary to keep classes as follow,
 
 * Native method
 
-	com.alipay.euler.andfix.AndFix
+	com.lionel.andfix2.library.AndFix
 
 * Annotation
 
-	com.alipay.euler.andfix.annotation.MethodReplace
+	com.lionel.andfix2.library.annotation.MethodReplace
 
 To ensure that these classes can be found after running an obfuscation and static analysis tool like ProGuard, add the configuration below to your ProGuard configuration file.
 
