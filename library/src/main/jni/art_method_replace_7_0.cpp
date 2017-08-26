@@ -39,6 +39,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#include <android/log.h>
+
 #include "art.h"
 #include "art_7_0.h"
 #include "common.h"
@@ -49,6 +51,12 @@ void replace_7_0(JNIEnv* env, jobject src, jobject dest) {
 
 	art::mirror::ArtMethod* dmeth =
 			(art::mirror::ArtMethod*) env->FromReflectedMethod(dest);
+
+    __android_log_print(ANDROID_LOG_ERROR, "AndFixJni", "ArtMethod size: %ld", sizeof(art::mirror::ArtMethod));
+    __android_log_print(ANDROID_LOG_ERROR, "AndFixJni", "ArtMethod status: %d",
+                        (int) reinterpret_cast<art::mirror::Class*>(dmeth->declaring_class_)->status_);
+
+
 
 //	reinterpret_cast<art::mirror::Class*>(smeth->declaring_class_)->class_loader_ =
 //			reinterpret_cast<art::mirror::Class*>(dmeth->declaring_class_)->class_loader_; //for plugin classloader
@@ -66,6 +74,8 @@ void replace_7_0(JNIEnv* env, jobject src, jobject dest) {
 	smeth->method_index_ = dmeth->method_index_;
 	smeth->hotness_count_ = dmeth->hotness_count_;
 
+    smeth->ptr_sized_fields_ = dmeth->ptr_sized_fields_;
+/*
 	smeth->ptr_sized_fields_.dex_cache_resolved_methods_ =
 			dmeth->ptr_sized_fields_.dex_cache_resolved_methods_;
 	smeth->ptr_sized_fields_.dex_cache_resolved_types_ =
@@ -75,6 +85,7 @@ void replace_7_0(JNIEnv* env, jobject src, jobject dest) {
 			dmeth->ptr_sized_fields_.entry_point_from_jni_;
 	smeth->ptr_sized_fields_.entry_point_from_quick_compiled_code_ =
 			dmeth->ptr_sized_fields_.entry_point_from_quick_compiled_code_;
+*/
 
 	LOGD("replace_7_0: %d , %d",
 			smeth->ptr_sized_fields_.entry_point_from_quick_compiled_code_,

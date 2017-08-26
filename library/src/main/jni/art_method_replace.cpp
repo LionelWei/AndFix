@@ -22,27 +22,25 @@
  *
  */
 #include <time.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <assert.h>
-
-#include <stdbool.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-
-#include <sys/stat.h>
-#include <dirent.h>
-#include <unistd.h>
-#include <ctype.h>
-#include <errno.h>
-#include <utime.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
 #include "art.h"
-#include "common.h"
+#include <android/log.h>
 
 static int apilevel;
+
+static size_t getMethodSize(JNIEnv* env) {
+	jclass cls = env->FindClass("com/lionel/andfix2/library/NativeStructsModel");
+	size_t methodIdFirst = (size_t) env->GetStaticMethodID(cls, "f1", "()V");
+	size_t methodIdSecond = (size_t) env->GetStaticMethodID(cls, "f2", "()V");
+	size_t methodSize = methodIdSecond - methodIdFirst;
+    __android_log_print(ANDROID_LOG_ERROR, "AndFixJni", "method size: %ld", methodSize);
+	return methodSize;
+}
+
+static void replace_method_wholy(JNIEnv* env, jobject src, jobject dest) {
+	jmethodID src_method = env->FromReflectedMethod(src);
+	jmethodID dest_method =  env->FromReflectedMethod(dest);
+	memcpy(src_method, dest_method, getMethodSize(env));
+}
 
 extern jboolean __attribute__ ((visibility ("hidden"))) art_setup(JNIEnv* env,
 		int level) {
@@ -52,6 +50,12 @@ extern jboolean __attribute__ ((visibility ("hidden"))) art_setup(JNIEnv* env,
 
 extern void __attribute__ ((visibility ("hidden"))) art_replaceMethod(
 		JNIEnv* env, jobject src, jobject dest) {
+
+/*
+	replace_method_wholy(env, src, dest);
+    return;
+*/
+
     if (apilevel > 23) {
         replace_7_0(env, src, dest);
     } else if (apilevel > 22) {
