@@ -50,6 +50,7 @@ public class A {
 	}
 
 	public static void showToast(Context context) {
-		Toast.makeText(context, "aaaa", Toast.LENGTH_SHORT).show();
+        Log.e("euler", "fix success!!!!!!");
+        Toast.makeText(context, "hahahha hello andfix2!!!!", Toast.LENGTH_SHORT).show();
 	}
 }

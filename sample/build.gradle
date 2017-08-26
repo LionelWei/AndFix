@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.lionel.andfix2.sample"
         minSdkVersion 16
-        targetSdkVersion Integer.valueOf(target_sdk_version)
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }

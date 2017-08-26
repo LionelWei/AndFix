@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.lionel.andfix2.library.annotation;
+package com.alipay.euler.andfix.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

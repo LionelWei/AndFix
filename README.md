@@ -144,7 +144,7 @@ And it is necessary to keep classes as follow,
 
 * Annotation
 
-	com.lionel.andfix2.library.annotation.MethodReplace
+	com.alipay.euler.andfix.annotation.MethodReplace
 
 To ensure that these classes can be found after running an obfuscation and static analysis tool like ProGuard, add the configuration below to your ProGuard configuration file.
 

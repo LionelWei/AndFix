@@ -28,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import android.content.Context;
 import android.util.Log;
 
-import com.lionel.andfix2.library.annotation.MethodReplace;
+import com.alipay.euler.andfix.annotation.MethodReplace;
 import com.lionel.andfix2.library.security.SecurityChecker;
 
 import dalvik.system.DexFile;

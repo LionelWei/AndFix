@@ -27,7 +27,7 @@
 
 #include "common.h"
 
-#define JNIREG_CLASS "com/alipay/euler/andfix/AndFix"
+#define JNIREG_CLASS "com/lionel/andfix2/library/AndFix"
 
 //dalvik
 extern jboolean dalvik_setup(JNIEnv* env, int apilevel);

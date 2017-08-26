@@ -11,3 +11,4 @@ PushSDK/build/
 sh.exe.stackdump
 *.DS_Store
 .externalNativeBuild/
+/apks/

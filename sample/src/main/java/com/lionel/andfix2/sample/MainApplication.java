@@ -4,7 +4,6 @@ import android.app.Application;
 import android.os.Environment;
 import android.util.Log;
 
-
 import com.lionel.andfix2.library.patch.PatchManager;
 
 import java.io.IOException;
@@ -27,11 +26,11 @@ public class MainApplication extends Application {
         // initialize
         mPatchManager = new PatchManager(this);
         mPatchManager.init(BuildConfig.VERSION_NAME);
-        Log.d(TAG, "inited.");
+        Log.e(TAG, "inited.");
 
         // load patch
         mPatchManager.loadPatch();
-        Log.d(TAG, "apatch loaded.");
+        Log.e(TAG, "apatch loaded.");
 
         // add patch at runtime
         try {
@@ -39,7 +38,7 @@ public class MainApplication extends Application {
             String patchFileString = Environment.getExternalStorageDirectory()
                     .getAbsolutePath() + APATCH_PATH;
             mPatchManager.addPatch(patchFileString);
-            Log.d(TAG, "apatch:" + patchFileString + " added.");
+            Log.e(TAG, "apatch:" + patchFileString + " added.");
         } catch (IOException e) {
             Log.e(TAG, "", e);
         }
